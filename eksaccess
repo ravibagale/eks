@@ -1,0 +1,18 @@
+- create one eks cluster , create one role for eks aws service , select eks-cluster use case and create 
+- launch one ec2 , install aws cli in it , do aws configure 
+- aws eks --region <region-code> update-kubeconfig --name <cluster-name>
+- creatye one role which gives access of eks cluster to ec2
+- assign that role to ec2 ( instance profile) 
+- add ports/ allow in eks security group 
+- install kubectl on ec2 (local machine)
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+
+- now you can fire kubectl commands.
+- if you are not able to fire kubectl commands then update aws-cli  to aws cli 2 and once again run command 
+aws eks --region <region-code> update-kubeconfig --name <cluster-name>
+
+- if even not worked then open kube config file on local ec2 machine and change api version to v1beta1 
+- now kubectl must work
+
